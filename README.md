@@ -16,9 +16,11 @@
 お出かけから旅行への情報ツール
 
 ## 設計書
+ER図　https://app.diagrams.net/#G1agfYvgetK8FjUXCmQ-bv0G8dO0eooo5Y
+ワイヤーフレーム https://app.diagrams.net/#G1dvvu7h91SfEdQU0QaoRF1VOB5pNPlfc6
 
 ### 機能一覧
-<https://docs.google.com/spreadsheets/d/1UgK-6l38k5T81XjcTIn7CHnGRkB_sBXS5xQWAVhWmks/edit#gid=0>
+https://docs.google.com/spreadsheets/d/1dt89SKUGHNVEKVIsA43F6vedwBny2UU5b4_MBI90Ukw/edit#gid=0
 
 ## 開発環境
 - OS：Linux(CentOS)
