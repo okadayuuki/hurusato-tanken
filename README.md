@@ -16,8 +16,8 @@
 お出かけから旅行への情報ツール
 
 ## 設計書
-ER図　https://app.diagrams.net/#G1agfYvgetK8FjUXCmQ-bv0G8dO0eooo5Y
 ワイヤーフレーム https://app.diagrams.net/#G1dvvu7h91SfEdQU0QaoRF1VOB5pNPlfc6
+画面遷移図・ER図　https://app.diagrams.net/#G1Lv2gx1ABWsFp6GeTq1uFXR9G3dgbn_QE
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1dt89SKUGHNVEKVIsA43F6vedwBny2UU5b4_MBI90Ukw/edit#gid=0
