@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_093107) do
     t.string "name"
     t.text "introduction"
     t.integer "eria_id"
+    t.string "user_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
