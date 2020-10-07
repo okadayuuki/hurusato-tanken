@@ -1,2 +1,29 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<!--検索機能-->
+		<div class="col-xs-4">
+			<div class="search-form">
+				<%= form_with(model:@search_posts, url:{action: 'search'} , method: :get, local: true) do |f| %>
+					<div class="search-form-field" style="margin:20px;">
+						<%= f.text_field :title, value: @search_params[:title] %>
+						<%= f.submit "キーワード検索" %>
+					</div>
+				<% end %>
+				<%= form_with(model:@search_posts, url:{action: 'search'} , method: :get, local: true) do |f| %>
+					<div class="search-form-field" style="margin:20px;">
+						<%= f.select(:eria_id, Post.eria_ids.keys, value: @search_params[:eria_id]) %>
+						<%= f.select(:scene_id, Post.scene_ids.keys, value: @search_params[:eria_id]) %>
+						<%= f.submit "エリア・シーン検索" %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<!--一覧-->
+		<div class="col-xs-8">
+			<h4>最近の出来事</h4>
+			<% @posts.each do |post| %>
+				<%= render 'post_list', post: post %>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,2 @@
+class Erium < ApplicationRecord
+end

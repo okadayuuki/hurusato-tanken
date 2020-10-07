@@ -1,0 +1,29 @@
+<div class="post-list" style="width:100%; height:400px; margin-bottom:20px;">
+	<%= attachment_image_tag post.user, :user_image, class: "img-circle", fallback: "no_image.jpg", size:"50x50" %>
+	<%= link_to post.user.name, user_path(post.user_id) %>
+	<br>
+	<%= link_to post_path(post.id) do %>
+		<%= attachment_image_tag post, :image, class: "img-square", fallback: "no_image.jpg", size:"500x250" %>
+		<br>
+	<% end %>
+	<div class="post-list-eria_id" style="margin-right:20px; float:left;">
+		<%= post.eria_id %>
+	</div>
+	<div class="post-list-title" style="margin-right:20px; float:left;">
+		<%= post.title %>
+	</div>
+	<div class="post-list-scene_id" style="float:left;">
+	<%= post.scene_id %>
+	</div>
+	<% if post.liked_by?(current_user) %>
+		<%= link_to post_like_path(post), method: :delete do %>
+			<i class="fa fa-heart-o" aria-hidden="true" style="color:red;"></i>×<%= post.likes.count %>
+		<% end %>
+	<% else %>
+		<%= link_to post_like_path(post), method: :post do %>
+			<i class="fa fa-heart-o" aria-hidden="true"></i>×<%= post.likes.count %>
+		<% end %>
+	<% end %>
+	<br>
+	<%= post.detail %>
+</div>
