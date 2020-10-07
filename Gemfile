@@ -69,12 +69,12 @@ gem 'jquery-rails'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 
-group :production do
-  gem 'unicorn', '5.4.1'
-end
 
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
 
+gem 'pry-byebug'
+
+gem 'geocoder'

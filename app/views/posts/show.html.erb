@@ -1,2 +1,58 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+
+			<%= attachment_image_tag @post, :image, class: "img-square", fallback: "no_image.jpg", size:"1000x500" %>
+
+			<% if @post.liked_by?(current_user) %>
+				<%= link_to post_like_path(@post), method: :delete do %>
+				<i class="fa fa-heart-o" aria-hidden="true" style="color:red;"></i>×<%= @post.likes.count %>
+				<% end %>
+
+			<% else %>
+
+				<%= link_to post_like_path(@post), method: :post do %>
+				<i class="fa fa-heart-o" aria-hidden="true"></i>×<%= @post.likes.count %>
+				<% end %>
+
+			<% end %>
+
+			コメント<%= @post.comments.count %>件
+
+			<br>
+
+			<%= attachment_image_tag @post.user, :user_image, class: "img-circle", fallback: "no_image.jpg", size:"50x50" %>
+
+			<%= @post.user.name %>
+			<br>
+			<%= @post.eria_id %>
+
+			<%= @post.title %>
+
+			<%= @post.scene_id %>
+
+			<div style="text-align:right;">
+				<%= link_to "詳しい場所はこちらから", post_map_path(@post.id) %>
+			</div>
+
+			<%= @post.detail %>
+
+			
+			<%= form_with model:[@post, @comment], local: true do |f| %>
+				<%= f.text_area :comment, placeholder:"コメント入力" %>
+				<%= f.submit "コメント送信" %>
+			<% end %>
+
+
+			<% @post.comments.each do |comment| %>
+				<div class="post-show-comment-list", style="height:80px; width:100px; margin-bottom:50px;">
+					<%= attachment_image_tag comment.user, :user_image, class: "imag-circle", fallback: "no_image.jpg", size:"50x50" %>
+					<%= comment.user.name %>
+					<%= comment.comment %>
+					<% end %>
+				</div>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+</div>

@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
-  	@posts = Post.all
+  	@posts = @user.posts.all
+  end
+
+  def likes
+     @user = current_user
+     @likes = Like.where(user_id: @user.id)
   end
 
   def edit
@@ -16,6 +21,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-  	params.require(:user).permit(:email, :name, :introduction, :eria_id, :user_image_id)
+  	params.require(:user).permit(:email, :name, :introduction, :user_image, :eria_id)
   end
 end
