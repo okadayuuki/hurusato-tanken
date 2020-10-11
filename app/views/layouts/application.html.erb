@@ -9,45 +9,43 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/13939d080b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="application.scss">
+    <script src="http://mplus-fonts.sourceforge.jp/"></script>
   </head>
 
-  <div class="body">
-   
-   <div style="text-align:center;"><%= image_tag 'ROGO.jpeg', :height => 250, :width => 300 %></div>
-    <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-     </div>
-    
-    <div class="collapse navbar-collapse" id="navbarEexample1">
+  <body>
+    <nav class="navbar navbar-default" style="height:100px; margin-bottom:10px;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <p style="margin:10px;"><%= image_tag 'ROGO.jpeg', :height => 85, :width => 85, class:"img-circle" %></p>
+         </div>
+        <div class="collapse navbar-collapse" id="navbarEexample1">
 
-        <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
+            <ul class="nav navbar-nav navbar-right" style="margin:30px 0;">
+              <% if user_signed_in? %>
 
-            <li><%= link_to "HOME", posts_path %></li>
-            <li><%= link_to "投稿", new_post_path %></li>
-            <li><%= link_to "マイページ", user_path(current_user) %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                <li><%= link_to posts_path do %><%= image_tag 'home.jpeg', :width => '10', :height => '10' %><strong> HOME</strong><% end %></li>
+                <li><%= link_to new_post_path do %><%= image_tag 'add-post.jpeg', :width => '15', :height => '15' %><strong> 投稿</strong><% end %></li>
+                <li><%= link_to user_path(current_user) do %><%= image_tag 'mypost.jpeg', :width => '15', :height => '15' %><strong> マイページ</strong><% end %></li>
+                <li><%= link_to destroy_user_session_path, method: :delete do %><%= image_tag 'logout.jpeg', :width => '15', :height => '15' %><strong> ログアウト</strong><% end %></li>
 
-          <% else %>
+              <% else %>
 
-            <li><%= link_to "HOME", top_path_url %></li>
-            <li><%= link_to "ABOUT", home_about_path %></li>
-            <li><%= link_to "利用登録", new_user_registration_path %></li>
-            <li><%= link_to "ログイン", new_user_session_path %></li>
+                <li><%= link_to top_path_url do %><%= image_tag 'home.jpeg', :width => '15', :height => '15' %><strong> HOME</strong><% end %></li>
+                <li><%= link_to home_about_path do %><%= image_tag 'about.jpeg', :width => '15', :height => '15' %><strong> ABOUT</strong><% end %></li>
+                <li><%= link_to new_user_registration_path do %><%= image_tag 'new.jpeg', :width => '15', :height => '15' %><strong> 利用登録</strong><% end %></li>
+                <li><%= link_to new_user_session_path do %><%= image_tag 'login.jpeg', :width => '15', :height => '15' %><strong> ログイン</strong><% end %></li>
 
-          <% end %>
-        </ul>
-    </div>
-  </div>
-</nav>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+   </nav>
     <%= yield %>
-  </div>
+  </body>
 </html>

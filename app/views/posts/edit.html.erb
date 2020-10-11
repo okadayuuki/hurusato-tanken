@@ -1,2 +1,36 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="container">
+	<div class="row">
+		<h1 style="text-align:center;">編集</h1>
+		<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+			<!--投稿（テキスト）-->
+			<%= form_with(model:@post, local:true) do |f| %>
+			<table style="margin:auto;">
+					<tr>
+						<th>エリア</th><td><%= f.select :eria_id, Post.eria_ids.keys, {prompt: '選択してください'}, autofocus: true, autocomplete: "eria", class:'btn btn-default' %></td>
+					</tr>
+					<tr>
+						<th>施設名称</th><td><%= f.text_field :title %></td>
+					</tr>
+					<tr>
+						<th>利用シーン</th><td><%= f.select :scene_id, Post.scene_ids.keys, {prompt:'選択してください'}, autofocus:true, autocomplete:"scene", class:'btn btn-default' %></td>
+					</tr>
+					<tr>
+						<th>おすすめポイント</th><td><%= f.text_area :detail %></td>
+					</tr>
+					<tr>
+						<th>思い出の一枚</th>
+						<td><%= attachment_image_tag @post, :image, class: "img-square", fallback: "no_image.jpg", size:"200x200" %>
+							<%= f.attachment_field :image, placeholder: "画像", class: "image-prev" %>
+						</td>
+					</tr>
+			</table>
+			<div>
+				<%= f.submit "送信" ,class:"col-xs-12" %>
+			</div>
+			<% end %>
+			<%= link_to "削除", post_path(@post.id), method: :delete %>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+</div>

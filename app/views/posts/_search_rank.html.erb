@@ -1,0 +1,31 @@
+<div class="search-form">
+	<%= form_with(model:post, url:{action: 'search'} , method: :get, local: true) do |f| %>
+		<div class="search-form-field" style="margin:20px;">
+			<%= f.text_field :title, value: @search_params[:title] %>
+			<%= f.submit "キーワード検索" %>
+		</div>
+	<% end %>
+		<%= form_with(model:post, url:{action: 'search'} , method: :get, local: true) do |f| %>
+			<label><%= f.radio_button :add, 1, checked:true, checked: "checked" %>エリア検索</label>
+			<label><%= f.radio_button :add, 2 %>シーン検索</label>
+			<label><%= f.radio_button :add, 3 %>エリア・シーン検索</label>
+			<%= f.select(:eria_id, Post.eria_ids.keys, {prompt: 'エリア選択'}, value: @search_params[:eria_id]) %>
+			<%= f.select(:scene_id, Post.scene_ids.keys, {prompt: 'シーン選択'}, value: @search_params[:eria_id]) %>
+			<%= f.submit "エリア・シーン検索" %>
+		<% end %>
+</div>
+<div class="ranking-famous-post">
+	<h3>人気投稿ランキング</h3>
+		<% @all_ranks.each.with_index(1) do |post, i| %>
+			<ul>
+				<li>
+					No.<%= i %>
+					<%= link_to post_path(post.id) do %>
+					<%= attachment_image_tag post.user, :user_image, class: "img-circle", fallback: "no_image.jpg", size:"50x50" %>
+					<%= post.user.name %>
+					<%= post.title %>
+					<% end %>
+				</li>
+			</ul>
+		<% end %>
+</div>

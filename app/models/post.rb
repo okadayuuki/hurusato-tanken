@@ -34,27 +34,5 @@ class Post < ApplicationRecord
 			Post.all
 		end
 	end
-	def Post.search(eria_id, eria_scene_all)
-		if eria_scene_all == 1
-			Post.where(eria_id: eria_id, eria_scene_all: 1)
-		else
-			Post.all
-		end
-	end
-
-	# def Post.search(scene_id, eria_scene_all)
-	# 	if eria_scene_all == "2"
-	# 		Post.where(scene_id: scene_id)
-	# 	else
-	# 		Post.all
-	# 	end
-	# end
-
-	# def Post.search(eria_id, scene_id, eria_scene_all)
-	# 	if eria_scene_all == "3"
-	# 		Post.where([:eria_id][:scene_id], eria_id, scene_id)
-	# 	else
-	# 		Post.all
-	# 	end
-	# end
+	
 end
