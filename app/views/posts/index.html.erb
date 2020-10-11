@@ -2,21 +2,7 @@
 	<div class="row">
 		<!--検索機能-->
 		<div class="col-xs-4">
-			<div class="search-form">
-				<%= form_with(model:@search_posts, url:{action: 'search'} , method: :get, local: true) do |f| %>
-					<div class="search-form-field" style="margin:20px;">
-						<%= f.text_field :title, value: @search_params[:title] %>
-						<%= f.submit "キーワード検索" %>
-					</div>
-				<% end %>
-				<%= form_with(model:@search_posts, url:{action: 'search'} , method: :get, local: true) do |f| %>
-					<div class="search-form-field" style="margin:20px;">
-						<%= f.select(:eria_id, Post.eria_ids.keys, value: @search_params[:eria_id]) %>
-						<%= f.select(:scene_id, Post.scene_ids.keys, value: @search_params[:eria_id]) %>
-						<%= f.submit "エリア・シーン検索" %>
-					</div>
-				<% end %>
-			</div>
+			<%= render 'search_rank', search_post: @search_post, post: @post, all_rank: @all_rank %>
 		</div>
 		<!--一覧-->
 		<div class="col-xs-8">

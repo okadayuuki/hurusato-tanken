@@ -11,10 +11,28 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
-    @search_params = post_search_params
-    @eria_scene_params= eria_scene_params
-  end
+    @posts = Post.all.order("id DESC")
+    @search_params = params
+    if params[:title].present?
+      @do_search = Post.where('title LIKE ?', "%#{params[:title]}%")
+    end
+
+    @eria_scene_search = params
+    eria_scene_all = params[:add]
+    if eria_scene_all == "1"
+       @do_search = Post.where(eria_id: params[:eria_id])
+    end
+
+    if eria_scene_all == "2"
+       @do_search = Post.where(scene_id: params[:scene_id])
+    end
+    if eria_scene_all == "3"
+       @do_search = Post.where(eria_id: params[:eria_id], scene_id: params[:scene_id])
+    end
+
+     @all_ranks = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+   end
+
 
   def show
     @post = Post.find(params[:id])
@@ -22,30 +40,40 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to post_path(@post.id)
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @user = @post.user_id
+    @post.delete
+    redirect_to user_path(@user)
   end
 
   def search
-    @search_params = post_search_params
-    @eria_scene_params= eria_scene_params
+    @search_params = params
+    if params[:title].present?
+      @do_search = Post.where('title LIKE ?', "%#{params[:title]}%")
+    end
+    @eria_scene_search = params
+    eria_scene_all = params[:add]
+    if eria_scene_all == "1"
+       @do_search = Post.where(eria_id: params[:eria_id])
+    end
 
-    @eria_scene_all = params[:option]
-    if @eria_scene_all == 1
-       @search_eria = Post.search(params[:eria_id], @eria_scene_all)
-
-    # else @eria_scene_all == "2"
-    #       @search_scene = Post.search(params[:scene_id], @eria_scene_all)
-    # # else
-    #   @search_all = Post.search(params[:eria_id][:scene_id], @eria_scene_all)
-     end
-
-    @posts = Post.all
-    @do_search = Post.search(params[:title])
+    if eria_scene_all == "2"
+       @do_search = Post.where(scene_id: params[:scene_id])
+    end
+    if eria_scene_all == "3"
+       @do_search = Post.where(eria_id: params[:eria_id], scene_id: params[:scene_id])
+    end
+     @all_ranks = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
   end
 
   private
@@ -53,11 +81,4 @@ class PostsController < ApplicationController
     params.require(:post).permit(:user_id,:title, :detail, :image, :eria_id, :scene_id)
   end
 
-  def post_search_params
-    params.fetch(:search, {}).permit(:title)
-  end
-
-  def eria_scene_params
-    params.fetch(:search, {}).permit(:eria_id, :scene_id)
-  end
 end

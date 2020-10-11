@@ -17,11 +17,8 @@ Rails.application.routes.draw do
   	get '/map_request', to: 'maps#map', as: 'map_request'
   end
 
-  resources :users, only:[:show, :edit, :update] do
-    collection do
-      get :likes
-    end
-  end
+  resources :users, only:[:show, :edit, :update]
+  get 'users/:id/likes' => 'users#likes', as:'likes_path'
 
 
 

@@ -22,7 +22,9 @@
 				<%= @user.introduction %>
 			</div>
 			<div class="user-show-linkedit", style="text-align:right;">
-			<%= link_to "マイページ編集", edit_user_path(@user.id), class:"btn" %>
+				<% if @user.id == current_user.id %>
+					<%= link_to "マイページ編集", edit_user_path(@user.id), class:"btn" %>
+				<% end %>
 			</div>
 		</div>
 		<div class="col-xs-2"></div>
@@ -31,12 +33,20 @@
 		<div class="col-xs-1"></div>
 		<div class="col-xs-10">
 			<div class="user-show-posts">
-a				<%= link_to "自分", user_path(@user.id), class:"btn, btn-default" %><%= link_to "お気に", likes_users_path, class:"btn, btn-default" %>
+				<div class="col-xs-6" style="border:2px solid #777777;">
+				<%= link_to user_path(@user.id), class:"btn, btn-primary" do %>
+					<div style="text-align:center;"><%= image_tag 'mypost.jpeg', :height => 30, :width => 30 %></div>
+				<% end %>
+				</div>
+				<div class="col-xs-6" style="border:2px solid #777777;" >
+					<%= link_to likes_path_url(@user.id), class:"btn, btn-primary" do %>
+						<div style="text-align:center;"><%= image_tag 'heart.jpeg', :height => 30, :width => 30 %></div>
+					<% end %>
+				</div>
 				<% @posts.each do |post| %>
 					<%= link_to post_path(post.id) do %>
 						<%= attachment_image_tag post, :image, class: "img-square", fallback: "no_image.jpg", size:"200x200" %>
 					<% end %>
-				<%=  %>
 				<% end %>
 			</div>
 		</div>

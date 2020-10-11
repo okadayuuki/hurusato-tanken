@@ -15,6 +15,20 @@
  *= require_self
  */
 @import "bootstrap-sprockets";
-@import "bootstrap"
+@import "bootstrap";
+
+/*post-show*/
+.f-container{
+	display:flex;
+}
+/*top*/
+.top-container{
+	height:700px;
+}
+
+/*registration-new*/
+.registration-new{
+	height:700px;
+}
 
 
