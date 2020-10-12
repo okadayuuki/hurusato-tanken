@@ -18,4 +18,4 @@ class MapsController < ApplicationController
 #   def post_params
 #     params.require(:post).permit(:title)
 #   end
-# end
+end
