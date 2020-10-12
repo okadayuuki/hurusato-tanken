@@ -6,31 +6,37 @@
 			<%= attachment_image_tag @post, :image, class: "img-square", fallback: "no_image.jpg", size:"1000x500" %>
 
 			<div class="f-container">
-				<div id="likes_buttons_<%= @post.id %>">
-	        		<%= render 'likes/like', post: @post %>
-	    		</div>
+				<div class="post-info">
+					<div id="likes_buttons_<%= @post.id %>">
+		        		<%= render 'likes/like', post: @post %>
+		    		</div>
 
-				コメント<%= @post.comments.count %>件
-				<% if @post.user_id == current_user.id %>
-					<%= link_to edit_post_path do %>
-						<%= image_tag 'edit.jpeg', :height => 20, :width => 20 %>
-					<% end %>
-				<% end %>
+					コメント<%= @post.comments.count %>件
+					<div class="link-post-edit">
+						<% if @post.user_id == current_user.id %>
+							<%= link_to edit_post_path do %>
+								<%= image_tag 'edit.jpeg', :height => 20, :width => 20 %>編集
+							<% end %>
+						<% end %>
+					</div>
+				</div>
 			</div>
 
 			<br>
 				<%= attachment_image_tag @post.user, :user_image, class: "img-circle", fallback: "no_image.jpg", size:"50x50" %>
-
+			
 				<%= @post.user.name %>
 			<br>
-			<%= @post.eria_id %>
+			<div class="post-content">
+				<%= @post.eria_id %>
 
-			<%= @post.title %>
+				<%= @post.title %>
 
-			<%= @post.scene_id %>
+				<%= @post.scene_id %>
 			<br>
 
-			<%= @post.detail %>
+				<%= @post.detail %>
+			</div>
 			<div style="text-align:right;">
 				<%= link_to post_map_path(@post.id) do %><%= image_tag 'mao.jpeg', :height => 20, :width => 20 %>詳しい場所はこちら<% end %>
 			</div>
@@ -39,7 +45,7 @@
 					<%= form_with model:[@post, @comment], local: true do |f| %>
 					<div class="col-xs-12">
 						<%= f.text_area :comment, placeholder:"コメント入力" %>
-						<%= f.submit "コメント送信" %>
+						<%= f.submit "コメント送信", class:"submit_btn" %>
 					</div>
 					<% end %>
 			</div>

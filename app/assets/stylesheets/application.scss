@@ -17,6 +17,25 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@font-face {
+  font-family: 'maru';
+  src: asset-url('font_1_honokamarugo_1.1.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body{
+	background-image:url(washitexture12_TP_V.jpg);
+}
+
+/*about*/
+.about-title{
+	font-family:maru;
+	font-size:40px;
+}
+
+
 /*post-show*/
 .f-container{
 	display:flex;
@@ -26,9 +45,196 @@
 	height:700px;
 }
 
-/*registration-new*/
-.registration-new{
-	height:700px;
+.theTarget{
+	position:relative;
+}
+
+.top-message{
+	position:absolute;
+	top:150px;
+	left:50px;
+	color:white;
+	opacity:0.5;
+	font-size:20px;
+	display:flex;
 }
 
 
+/*registration-new*/
+.new-registration-image{
+	position:relative;
+}
+.new-registration-form{
+	position:absolute;
+	top:100px;
+	left:500px;
+	color:white;
+	font-family:maru;
+}
+
+/*search-rank*/
+.search-form-image{
+	position:relative;
+}
+.search-form-keyword{
+	position:absolute;
+	top:0;
+	left:0;
+	font-size:18px;
+}
+
+.search-eria-scene{
+	position:absolute;
+	top:100px;
+}
+
+.how-search{
+	font-family:maru;
+	font-size:18px;
+}
+
+.search-form-eria-scene{
+	font-size:18px;
+	margin-top:20px;
+}
+
+.ranking-famous-post-image{
+	position:relative;
+}
+
+.ranking-famous-post{
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.ranking-famous-post ul{
+	list-style:none;
+}
+
+.ranking-list{
+	margin:50px auto;
+}
+
+// paginate
+.pagination{
+  margin: auto;
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+}
+.pagination span{
+  background-color: rgba(158, 158, 158, 0.4);
+  text-align: center;
+  width: 50px;
+  border: solid 1px #344963;
+  color: rgb(197, 20, 159);
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.pagination span:hover{
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.pagination span a:hover{
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/*index*/
+.index-title{
+	font-famoly:maru;
+	text-align:center;
+	border-bottom:2px solid #c0c0c0;
+	width:300px;
+
+}
+
+.post-list{
+	font-size:20px;
+	width:100%;
+	height:550px;
+	margin-bottom:70px;
+}
+
+/*post-new*/
+.post-new-title{
+	text-align:center;
+	font-family:maru;
+	margin-bottom:30px;
+}
+
+.post-new-field{
+	font-family:maru;
+	font-size:20px;
+	text-align:center;
+	margin-bottom:20px;
+}
+
+/*user-show*/
+.user-show-title{
+	font-family:maru;
+}
+.user-show-mypost{
+	margin:100px 0;
+	display:block;
+}
+.user-show-mylike{
+	margin:100px 0;
+	display:block;
+}
+.show_mypost_btn{
+	position:absolute;
+	top:0;
+	width:300px;
+	background-color: #228B22;
+	text-align:center;
+	margin:50px 0;
+	opacity:0.7;
+	border-radius:30px;
+}
+.show_mylike_btn{
+	position:absolute;
+	top:0;
+	width:300px;
+	text-align:center;
+	margin:50px 0;
+	opacity:0.7;
+	border-radius:30px;
+}
+.user-show-post{
+	display:block;
+	margin-top:150px;
+}
+
+/*user-edit*/
+.edit-user{
+	font-family:maru;
+}
+.user-edit-form{
+	font-size:20px;
+}
+.submit_btn{
+	position:absolute;
+	background-color:#FFD5EC;
+	border-radius:30px;
+}
+
+/* post-show */
+.post-info{
+	font-size:25px;
+}
+
+f-container{
+	display:flex;
+}
+
+.link-post-edit{
+	text-align:left;
+}
+.post-content{
+	font-size:20px;
+}

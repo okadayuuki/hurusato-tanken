@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order("id DESC")
+    @posts = Post.page(params[:page]).reverse_order.order("id DESC")
     @search_params = params
     if params[:title].present?
       @do_search = Post.where('title LIKE ?', "%#{params[:title]}%")

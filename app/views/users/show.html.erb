@@ -1,10 +1,12 @@
 <div class="container">
 	<div class="row">
-		<% if @user.id == current_user.id %>
-			<h3 style="text-align:center;">マイページ</h3>
-		<% else %>
-			<h3 style="text-align:center;"><%= @user.name %>さんのページ</h3>
-		<% end %>
+		<div class="user-show-title">
+			<% if @user.id == current_user.id %>
+				<h1 style="text-align:center;">マイページ</h1>
+			<% else %>
+				<h1 style="text-align:center;"><%= @user.name %>さんのページ</h1>
+			<% end %>
+		</div>
 		<div class="col-xs-2"></div>
 		<div class="col-xs-4">
 			<div class="user-show-image">
@@ -33,21 +35,27 @@
 		<div class="col-xs-1"></div>
 		<div class="col-xs-10">
 			<div class="user-show-posts">
-				<div class="col-xs-6" style="border:2px solid #777777;">
-				<%= link_to user_path(@user.id), class:"btn, btn-primary" do %>
-					<div style="text-align:center;"><%= image_tag 'mypost.jpeg', :height => 30, :width => 30 %></div>
-				<% end %>
+				<div class="col-xs-6">
+					<div class="user-show-mypost">
+						<%= link_to user_path(@user.id), class:"show_mypost_btn btn-primary", :width => 300 do %>
+							<div style="text-align:center;"><%= image_tag 'mypost.jpeg', :height => 30, :width => 30 %></div>
+						<% end %>
+					</div>
 				</div>
-				<div class="col-xs-6" style="border:2px solid #777777;" >
-					<%= link_to likes_path_url(@user.id), class:"btn, btn-primary" do %>
-						<div style="text-align:center;"><%= image_tag 'heart.jpeg', :height => 30, :width => 30 %></div>
-					<% end %>
+				<div class="col-xs-6">
+					<div class="user-show-mylike">
+						<%= link_to likes_path_url(@user.id), class:"show_mylike_btn btn-primary" do %>
+							<div style="text-align:center;"><%= image_tag 'heart.jpeg', :height => 30, :width => 30 %></div>
+						<% end %>
+					</div>
 				</div>
+				<div class="uer-show-post">
 				<% @posts.each do |post| %>
 					<%= link_to post_path(post.id) do %>
 						<%= attachment_image_tag post, :image, class: "img-square", fallback: "no_image.jpg", size:"200x200" %>
 					<% end %>
 				<% end %>
+				</div>
 			</div>
 		</div>
 		<div class="col-xs-1"></div>
