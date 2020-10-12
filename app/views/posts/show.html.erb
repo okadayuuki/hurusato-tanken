@@ -37,9 +37,7 @@
 
 				<%= @post.detail %>
 			</div>
-			<div style="text-align:right;">
-				<%= link_to post_map_path(@post.id) do %><%= image_tag 'mao.jpeg', :height => 20, :width => 20 %>詳しい場所はこちら<% end %>
-			</div>
+			
 
 			<div class="row">
 					<%= form_with model:[@post, @comment], local: true do |f| %>
