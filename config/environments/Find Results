@@ -1,0 +1,35 @@
+Searching 2847 files for "ROGO"
+
+/Users/okadayuuki/Desktop/work/vagrant/hurusato-tanken/app/views/home/top.html.erb:
+    2  			<div class="theTarget">
+    3  		      <div>
+    4: 		      	<%= image_tag 'LOGO.jpeg', :width => '100%', :height => '700' %>
+    5  		      </div>
+    6  		      <div>
+
+/Users/okadayuuki/Desktop/work/vagrant/hurusato-tanken/app/views/layouts/application.html.erb:
+   23              <span class="icon-bar"></span>
+   24            </button>
+   25:           <p style="margin:10px;"><%= image_tag 'LOGO.jpeg', :height => 85, :width => 85, class:"img-circle" %></p>
+   26           </div>
+   27          <div class="collapse navbar-collapse" id="navbarEexample1">
+
+/Users/okadayuuki/Desktop/work/vagrant/hurusato-tanken/log/development.log:
+    <binary>
+
+/Users/okadayuuki/Desktop/work/vagrant/hurusato-tanken/tmp/cache/assets/sprockets/v3.0/ax/aX3E7_54NrJjX7mBnlkUFVa1HniM24pzE0WcQO0lM5I.cache:
+    <binary>
+
+/Users/okadayuuki/Desktop/work/vagrant/hurusato-tanken/tmp/cache/assets/sprockets/v3.0/fS/FSkGGQp9vPxwJ1uzvF9A6VO-C49F7ETyRHzGQDm8mAI.cache:
+    <binary>
+
+/Users/okadayuuki/Desktop/work/vagrant/hurusato-tanken/tmp/cache/assets/sprockets/v3.0/M1/m1cAznq70srpHe2pja0fb7PrYPqgBCtMj-eb_xYixZ4.cache:
+    <binary>
+
+/Users/okadayuuki/Desktop/work/vagrant/hurusato-tanken/tmp/cache/assets/sprockets/v3.0/VY/vYJFbhm2HUgUIO1-okvhaPD6F9PHa_xG61aeUkTN4MU.cache:
+    <binary>
+
+/Users/okadayuuki/Desktop/work/vagrant/hurusato-tanken/tmp/cache/assets/sprockets/v3.0/xG/xG7dvWKekrYfHV7_fhBF2_RqLxOEmWkUt4hzFSPLJS8.cache:
+    <binary>
+
+29 matches across 8 files
