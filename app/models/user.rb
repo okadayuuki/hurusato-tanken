@@ -23,4 +23,8 @@ class User < ApplicationRecord
 
   attachment :user_image
 
+  validates :name, presence:true
+  validates :eria_id, presence:true
+  validates :introduction, length: {maximum: 500}
+
 end
