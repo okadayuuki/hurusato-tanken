@@ -49,7 +49,8 @@
 						<% end %>
 					</div>
 				</div>
-				<div class="user-show-post">
+			</div>
+			<div class="user-show-post">
 				<% @posts.each do |post| %>
 					<%= link_to post_path(post.id) do %>
 						<%= attachment_image_tag post, :image, class: "img-square", fallback: "no_image.jpg", size:"200x200" %>

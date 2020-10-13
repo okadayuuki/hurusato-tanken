@@ -1,3 +1,4 @@
+<%= flash[:notice] %>
 <div class="container">
 	<div class="row">
 		<div class="col-xs-1"></div>
@@ -24,8 +25,9 @@
 
 			<br>
 				<%= attachment_image_tag @post.user, :user_image, class: "img-circle", fallback: "no_image.jpg", size:"50x50" %>
-			
+			<%= link_to user_path(@post.user.id) do %>
 				<%= @post.user.name %>
+			<% end %>
 			<br>
 			<div class="post-content">
 				<%= @post.eria_id %>
@@ -37,12 +39,13 @@
 
 				<%= @post.detail %>
 			</div>
-			
+
 
 			<div class="row">
+
 					<%= form_with model:[@post, @comment], local: true do |f| %>
 					<div class="col-xs-12">
-						<%= f.text_area :comment, placeholder:"コメント入力" %>
+						<%= f.text_area :comment, placeholder:"コメント入力", class:"comment-text-form" %>
 						<%= f.submit "コメント送信", class:"submit_btn" %>
 					</div>
 					<% end %>
@@ -53,12 +56,15 @@
 				<div class="post-show-comment-list">
 					<table>
 						<tr>
-							<th style="text-align:center;">
+							<td style="text-align:center;">
 								<%= attachment_image_tag comment.user, :user_image, class: "img-circle", fallback: "no_image.jpg", size:"50x50" %>
 								<br>
 								<%= comment.user.name %>
-							</th>
-							<td><%= comment.comment %></td>
+							</td>
+							<td><span>　　</span><%= comment.comment %></td>
+							<td><% if current_user.id == comment.user_id %>
+								<%= link_to "コメント削除", post_comment_path(comment.post_id, comment), method: :delete, class:"btn submit_btn" %>
+								<% end %></td>
 						</tr>
 					</table>
 				</div>
