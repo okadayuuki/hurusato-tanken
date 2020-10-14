@@ -5,9 +5,8 @@
 		<div class="col-xs-10">
 			<!--投稿（テキスト）-->
 			<%= form_for(@post) do |f| %>
-			<div class="post-new">
 					<div class="post-new-field">
-						<p>エリア　　</p><%= f.select :eria_id, Post.eria_ids.keys, {prompt: '選択してください'}, autofocus: true, autocomplete: "eria", class:'btn btn-default' %>
+						<p>エリア</p><%= f.select :eria_id, Post.eria_ids.keys, {prompt: '選択してください'}, autofocus: true, autocomplete: "eria", class:'btn btn-default' %>
 					</div>
 					<div class="post-new-field">
 						<p>施設名称　</p><%= f.text_field :title %>
@@ -18,13 +17,21 @@
 					<div class="post-new-field">
 						<p>おすすめポイント</p><%= f.text_area :detail %>
 					</div>
-					<div class="post-new-field post-new-image">
+					<div class="post-new-field">
 						<p>思い出の一枚</p>
 						<%= attachment_image_tag @post, :image, class: "img-square", fallback: "no_image.jpg", size:"200x200" %>
-						<%= f.attachment_field :image, placeholder: "画像", class: "image-prev" %>
 					</div>
-					<%= f.submit "投稿" ,class:"col-xs-12" %>
-			</div>
+					<div class="col-xs-6"></div>
+					<div class="col-xs-6">
+						<div class="post-new-field">
+							<%= f.attachment_field :image %>
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="post-new-field">
+							<%= f.submit "投稿" ,class:"submit_btn" %>
+						</div>
+					</div>
 			<% end %>
 		</div>
 		<div class="col-xs-1"></div>
