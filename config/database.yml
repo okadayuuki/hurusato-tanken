@@ -31,4 +31,4 @@ production:
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
 
-  <%= GOOGLE_API_KEY %>
+  <%= ENV['GOOGLE_API_KEY'] %>
