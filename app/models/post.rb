@@ -10,6 +10,7 @@ class Post < ApplicationRecord
 
 	has_many :comments, dependent: :destroy
 
+	has_many :tags, dependent: :destroy
 	attachment :image
 
 	enum eria_id: {
@@ -34,8 +35,8 @@ class Post < ApplicationRecord
 			Post.all
 		end
 	end
-	validates :title, presence:true, length: {minimum:2, maximum:20}
-	validates :eria_id, presence:true
-	validates :scene_id, presence:true
-	validates :detail, presence:true, length: {minimum:2, maximum:200}
+	#validates :title, presence:true, length: {minimum:2, maximum:20}
+	#validates :eria_id, presence:true
+	#validates :scene_id, presence:true
+	#validates :detail, presence:true, length: {minimum:2, maximum:200}
 end

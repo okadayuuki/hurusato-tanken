@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   	collection do
   		get :search
   	end
-  	# resources :maps, only: [:show]
-  	# get '/map_request', to: 'maps#map', as: 'map_request'
+  	 resources :maps, only: [:index]
+     get '/map_request', to: 'maps#map', as: 'map_request'
   end
 
   resources :users, only:[:show, :edit, :update]
