@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   	collection do
   		get :search
   	end
-  	 resources :maps, only: [:index]
-     get '/map_request', to: 'maps#map', as: 'map_request'
   end
+   resources :maps, only: [:index]
+     get '/map_request', to: 'maps#map', as: 'map_request'
 
   resources :users, only:[:show, :edit, :update]
   get 'users/:id/likes' => 'users#likes', as:'likes_path'

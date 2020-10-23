@@ -1,4 +1,4 @@
-<%= form_with url:post_map_request_path, method: :get do |f| %>
+<%= form_with url:map_request_path, method: :get do |f| %>
 	<%= f.text_field :address %>
 	<%= f.submit '地図表示' %>
 <% end %>
@@ -47,5 +47,5 @@
 }
 </script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC7mii-ZrEucN72KpHabk9CQdTkam3W9eU&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key= <%= ENV['GOOGLE_API_KEY'] %>&callback=initMap">
 </script>
