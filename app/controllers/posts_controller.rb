@@ -4,9 +4,15 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    @post.save
+
+    post = Post.new(post_params)
+    post.user_id = current_user.id
+
+    post.save!
+    tags = Vision.get_image_data(post.image)
+    tags.each do |tag|
+      post.tags.create(name: tag)
+    end
     redirect_to posts_path,flash:{success: "投稿が完了しました。"}
   end
 
@@ -30,7 +36,7 @@ class PostsController < ApplicationController
        @do_search = Post.where(eria_id: params[:eria_id], scene_id: params[:scene_id]).page(params[:page]).reverse_order
     end
 
-     @all_ranks = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+      @all_ranks = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
    end
 
 
